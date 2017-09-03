@@ -29,8 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
     programsList.append(new QStandardItem("Column 3 Text"));
 
     model->appendRow(programsList);
-    //Conjunto_Processos* conjuntoProcessos = new Conjunto_Processos();
-    //std::cout << conjuntoProcessos;
+    Conjunto_Processos* conjuntoProcessos = new Conjunto_Processos();
+    std::cout << conjuntoProcessos->programas.at(0).getPID();
 
 
 

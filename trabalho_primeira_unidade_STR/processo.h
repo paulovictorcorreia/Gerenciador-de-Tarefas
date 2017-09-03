@@ -8,6 +8,7 @@ class Processo
 {
 private:
     int PID;
+    string estado;
     string user;
     string comando;
     float CPU_USAGE, mem;

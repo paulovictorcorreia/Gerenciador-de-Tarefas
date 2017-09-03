@@ -20,14 +20,13 @@ void Conjunto_Processos::atualizarDados()
 {
 
     Conjunto_Processos* pointer = this;
-    thread atualiza(&Conjunto_Processos::receiveFunction, pointer);
+    thread atualiza(&Conjunto_Processos::lerArquivo, pointer);
     atualiza.join();
 }
 
 
 void Conjunto_Processos::lerArquivo()
 {
-    while(1){
 
         unsigned int i;
         ifstream  meusProcessos;//ler arquivo de texto
@@ -66,6 +65,11 @@ void Conjunto_Processos::lerArquivo()
                     i++;
                     continue;
                 }
+                else if(i == 7){
+                    my_rank.setEstado(buffer);
+                    i++;
+                    continue;
+                }
                 else if(i == 10){
                     my_rank.setComando(buffer);
                     i++;
@@ -83,7 +87,6 @@ void Conjunto_Processos::lerArquivo()
         meusProcessos.close();
         QThread::sleep(2);
     }
-}
 
 void Conjunto_Processos::receiveFunction(Conjunto_Processos *pointer)
 {
